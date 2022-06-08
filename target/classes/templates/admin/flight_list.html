@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../static/admin/asset/css/bootstrap.min.css"
+          th:href="@{/admin/asset/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="../../static/admin/asset/css/plugins/font-awesome.min.css"
+          th:href="@{/admin/asset/css/plugins/font-awesome.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../../static/admin/asset/css/plugins/animate.min.css"
+          th:href="@{/admin/asset/css/plugins/animate.min.css}"/>
+    <link href="../../static/admin/asset/css/style.css" rel="stylesheet" th:href="@{/admin/asset/css/style.css}">
+</head>
+<body>
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="col-md-12">
+            <h3 class="animated fadeInLeft">航班列表</h3>
+            <p class="animated fadeInDown">航班管理>航班列表</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-12 padding-0 form-element">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h3>列表内容</h3>
+        </div>
+
+        <div class="panel-body">
+            <div class="responsive-table">
+                <div id="datatables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-striped table-bordered dataTable no-footer" width="100%"
+                                   cellspacing="0" style="width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th class="sorting_asc" style="width:8%;">航班号</th>
+                                    <th class="sorting" style="width:8%;">始发地</th>
+                                    <th class="sorting" style="width:8%;">目的地</th>
+                                    <th class="sorting" style="width:8%;">起飞时间</th>
+                                    <th class="sorting" style="width:8%;">到达时间</th>
+                                    <th class="sorting" style="width:8%;">头等舱数量</th>
+                                    <th class="sorting" style="width:8%;">商务舱数量</th>
+                                    <th class="sorting" style="width:8%;">经济舱数量</th>
+                                    <th class="sorting" style="width:8%;">头等舱价格</th>
+                                    <th class="sorting" style="width:8%;">商务舱价格</th>
+                                    <th class="sorting" style="width:8%;">经济舱价格</th>
+                                    <th class="sorting" style="width:4%;">&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="flight:${flight_list}">
+                                    <td th:text="${flight.flightNum}"></td>
+                                    <td th:text="${flight.departure}"></td>
+                                    <td th:text="${flight.destination}"></td>
+                                    <td th:text="${flight.departureTime}"></td>
+                                    <td th:text="${flight.arrivalTime}"></td>
+                                    <td th:text="${flight.firstClassNum}"></td>
+                                    <td th:text="${flight.businessClassNum}"></td>
+                                    <td th:text="${flight.economyClassNum}"></td>
+                                    <td th:text="${flight.firstClassPrice}"></td>
+                                    <td th:text="${flight.businessClassPrice}"></td>
+                                    <td th:text="${flight.economyClassPrice}"></td>
+                                    <td>
+                                        <a th:href="@{/admin/deleteFlight/}+${flight.flightID}">删除</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
